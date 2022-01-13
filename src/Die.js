@@ -1,5 +1,11 @@
 import React from "react"
 
+const diceSyle = [
+{
+    
+}
+]
+
 export default function Die(props) {
     const styles = {
         backgroundColor: props.isHeld ? "#59E391" : "white"
@@ -10,7 +16,13 @@ export default function Die(props) {
             style={styles}
             onClick={props.holdDice}
         >
-            <h2 className="die-num">{props.value}</h2>
+           <span></span>
+           <span></span>
+           <span></span>
+           <span></span>
+           <span></span>
+           <span></span>
+           <span></span>
         </div>
     )
 }
