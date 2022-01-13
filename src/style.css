@@ -58,7 +58,6 @@ main {
 .die-face > span {
     align-self: center;
     justify-self: center;
-    background: #fff;
     width: 7px;
     height: 7px;
     border-radius: 50%;
