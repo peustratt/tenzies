@@ -2,12 +2,26 @@ import React from "react"
 import Die from "./Die"
 import {nanoid} from "nanoid"
 import Confetti from "react-confetti"
+import Timer from './Timer'
 
 export default function App() {
 
     const [dice, setDice] = React.useState(allNewDice())
     const [tenzies, setTenzies] = React.useState(false)
     const [rollCount, setRollCount] = React.useState(1)
+
+    const [time, setTime] = React.useState(119105)
+
+    React.useEffect(() => {
+        let interval = null
+
+        if (rollCount > 1 && !tenzies) {
+            interval = setInterval(() => {
+                setTime(prevTime => prevTime + 10)
+            }, 10)
+        }
+        return () => clearInterval(interval)
+    },[tenzies, dice])
     
     React.useEffect(() => {
         const allHeld = dice.every(die => die.isHeld)
@@ -43,6 +57,7 @@ export default function App() {
             }))
             setRollCount(prevCount => prevCount + 1)
         } else {
+            setTime(0)
             setTenzies(false)
             setRollCount(1)
             setDice(allNewDice())
@@ -74,6 +89,7 @@ export default function App() {
             <div className="dice-container">
                 {diceElements}
             </div>
+            <Timer time={time} />
             <p>N° de jogadas: {rollCount}</p>
             <button 
                 className="roll-dice" 
