@@ -21,7 +21,7 @@ export default function App() {
             }, 10)
         }
         return () => clearInterval(interval)
-    },[tenzies, dice])
+    })
     
     React.useEffect(() => {
         const allHeld = dice.every(die => die.isHeld)
