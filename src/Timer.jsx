@@ -16,9 +16,11 @@ function Timer({time}) {
 
     return (
         <div className='timer'>
-            <span>Minutes {timer.minutes}</span>
-            <span>Seconds {timer.seconds}</span>
-            <span>Miliseconds {timer.miliseconds}</span>
+            <span className='digits'>{timer.minutes}</span>
+            <span>:</span>
+            <span className='digits'>{timer.seconds}</span>
+            <span>:</span>
+            <span className='digits'>{timer.miliseconds}</span>
         </div>
     )
 }

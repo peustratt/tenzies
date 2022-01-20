@@ -6,12 +6,11 @@ body {
     margin: 0;
     background-color: #0B2434;
     padding: 20px;
-    font-family: 'Karla', sans-serif;
 }
 
 main {
     background-color: #F5F5F5;
-    height: 400px;
+    height: fit-content;
     max-width: 500px;
     margin: 20px auto;
     border-radius: 5px;
@@ -25,6 +24,7 @@ main {
 .title {
     font-size: 40px;
     margin: 0;
+    margin-bottom: 10px;
 }
 
 .instructions {
@@ -89,5 +89,14 @@ main {
 
 .timer {
     display: flex;
-    flex-direction: column;
+    gap: .3em;
+    font-size: 20px;
+    font-family: 'Mochiy Pop P One', sans-serif;
+    justify-content: center;
+}
+
+.digits {
+    display: flex;
+    justify-content: center;
+    width: 2ch;
 }

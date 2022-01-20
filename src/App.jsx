@@ -10,7 +10,7 @@ export default function App() {
     const [tenzies, setTenzies] = React.useState(false)
     const [rollCount, setRollCount] = React.useState(1)
 
-    const [time, setTime] = React.useState(119105)
+    const [time, setTime] = React.useState(0)
 
     React.useEffect(() => {
         let interval = null
