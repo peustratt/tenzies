@@ -14,13 +14,11 @@ export default function Die(props) {
         backgroundColor: props.isHeld ? "#59E391" : "white"
     }
 
-
-
-    const dotsEl = [1,2,3,4,5,6,7].map((dot) => {
+    const dotsEl = [1, 2, 3, 4, 5, 6, 7].map((dot) => {
         let indexDado = props.value - 1
-
-        return <span style={dicePattern[indexDado].includes(dot) ? {backgroundColor: "black"} : {backgroundColor: "transparent"}}></span>
+        return <span key={dot} style={dicePattern[indexDado].includes(dot) ? { backgroundColor: "black" } : { backgroundColor: "transparent" }}></span>
     })
+
     return (
         <div
             className="die-face"

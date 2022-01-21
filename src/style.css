@@ -9,6 +9,7 @@ body {
 }
 
 main {
+    position: relative;
     background-color: #F5F5F5;
     height: fit-content;
     max-width: 500px;
@@ -99,4 +100,17 @@ main {
     display: flex;
     justify-content: center;
     width: 2ch;
+}
+
+.best-time {
+    display: flex;
+    align-items: flex-end;
+    gap: .2em;
+    position: absolute;
+    right: 5px;
+    bottom: 3px;
+}
+
+.best-time > p {
+    margin-bottom: 1px;
 }

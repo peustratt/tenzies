@@ -3,6 +3,7 @@ import Die from "./Die"
 import {nanoid} from "nanoid"
 import Confetti from "react-confetti"
 import Timer from './Timer'
+import BestTime from "./BestTime"
 
 export default function App() {
 
@@ -12,6 +13,7 @@ export default function App() {
 
     const [time, setTime] = React.useState(0)
     const [hasStarted, setHasStarted] = React.useState(() => false)
+    const [bestTime, setBestTime] = React.useState(() => localStorage.getItem('best-time') ? parseInt(localStorage.getItem('best-time')) : "")
 
     React.useEffect(() => {
         let interval = null
@@ -30,6 +32,10 @@ export default function App() {
         const allSameValue = dice.every(die => die.value === firstValue)
         if (allHeld && allSameValue) {
             setTenzies(true)
+            if (time < bestTime || !bestTime) {
+                setBestTime(time)
+                localStorage.setItem('best-time', time.toString())
+            }
         }
     }, [dice])
 
@@ -100,6 +106,7 @@ export default function App() {
             >
                 {tenzies ? "Novo jogo" : "Jogar"}
             </button>
+            <BestTime time={bestTime}/>
         </main>
     )
 }
