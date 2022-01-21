@@ -22,7 +22,7 @@ export default function App() {
             }, 10)
         }  
         return () => clearInterval(interval)
-    },[hasStarted])
+    },[tenzies ,hasStarted])
 
     React.useEffect(() => {
         const allHeld = dice.every(die => die.isHeld)
