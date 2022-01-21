@@ -11,18 +11,19 @@ export default function App() {
     const [rollCount, setRollCount] = React.useState(1)
 
     const [time, setTime] = React.useState(0)
+    const [hasStarted, setHasStarted] = React.useState(() => false)
 
     React.useEffect(() => {
         let interval = null
 
-        if (rollCount > 1 && !tenzies) {
+        if (hasStarted && !tenzies) {
             interval = setInterval(() => {
                 setTime(prevTime => prevTime + 10)
             }, 10)
-        }
+        }  
         return () => clearInterval(interval)
-    })
-    
+    },[hasStarted])
+
     React.useEffect(() => {
         const allHeld = dice.every(die => die.isHeld)
         const firstValue = dice[0].value
@@ -50,6 +51,7 @@ export default function App() {
     
     function rollDice() {
         if(!tenzies) {
+            setHasStarted(true)
             setDice(oldDice => oldDice.map(die => {
                 return die.isHeld ? 
                     die :
@@ -65,6 +67,7 @@ export default function App() {
     }
     
     function holdDice(id) {
+        setHasStarted(true)
         setDice(oldDice => oldDice.map(die => {
             return die.id === id ? 
                 {...die, isHeld: !die.isHeld} :
