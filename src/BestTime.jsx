@@ -1,12 +1,12 @@
 import React from 'react'
 import { formatTime } from './utils'
 
-function Timer({time}) {
-
+function BestTime({time}) {
     const timer = formatTime(time)
 
     return (
-        <div className='timer'>
+        <div className='best-time'>
+            <p>Recorde: </p>
             <span className='digits'>{timer.minutes}</span>
             <span>:</span>
             <span className='digits'>{timer.seconds}</span>
@@ -16,4 +16,4 @@ function Timer({time}) {
     )
 }
 
-export default Timer
+export default BestTime
