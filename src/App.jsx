@@ -24,7 +24,7 @@ export default function App() {
             }, 10)
         }  
         return () => clearInterval(interval)
-    },[tenzies ,hasStarted])
+    },[tenzies, hasStarted])
 
     React.useEffect(() => {
         const allHeld = dice.every(die => die.isHeld)
@@ -37,7 +37,8 @@ export default function App() {
                 localStorage.setItem('best-time', time.toString())
             }
         }
-    }, [dice])
+        // estudar useReducer para melhorar o código
+    }, [dice, bestTime, time])
 
     function generateNewDie() {
         return {
