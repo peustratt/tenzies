@@ -9,13 +9,13 @@ const dicePattern = [
     [1, 3, 4, 5, 6, 7],
 ];
 
-export default function Die(props) {
+export default function Die({isHeld, value, holdDice}) {
     const styles = {
-        backgroundColor: props.isHeld ? "#59E391" : "white",
+        backgroundColor: isHeld ? "#59E391" : "white",
     };
 
     const dotsEl = [1, 2, 3, 4, 5, 6, 7].map((dot) => {
-        let indexDado = props.value - 1;
+        let indexDado = value - 1;
         return (
             <span
                 key={dot}
@@ -29,7 +29,7 @@ export default function Die(props) {
     });
 
     return (
-        <div className="die-face" style={styles} onClick={props.holdDice}>
+        <div className="die-face" style={styles} onClick={holdDice}>
             {dotsEl}
         </div>
     );

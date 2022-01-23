@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Die from "./components/Die";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
@@ -6,19 +6,19 @@ import Timer from "./components/Timer";
 import BestTime from "./components/BestTime";
 
 export default function App() {
-    const [dice, setDice] = React.useState(allNewDice());
-    const [tenzies, setTenzies] = React.useState(false);
-    const [rollCount, setRollCount] = React.useState(1);
+    const [dice, setDice] = useState(allNewDice());
+    const [tenzies, setTenzies] = useState(false);
+    const [rollCount, setRollCount] = useState(1);
 
-    const [time, setTime] = React.useState(0);
-    const [hasStarted, setHasStarted] = React.useState(() => false);
-    const [bestTime, setBestTime] = React.useState(() =>
+    const [time, setTime] = useState(0);
+    const [hasStarted, setHasStarted] = useState(() => false);
+    const [bestTime, setBestTime] = useState(() =>
         localStorage.getItem("best-time")
             ? parseInt(localStorage.getItem("best-time"))
             : ""
     );
 
-    React.useEffect(() => {
+    useEffect(() => {
         let interval = null;
 
         if (hasStarted && !tenzies) {
@@ -29,7 +29,7 @@ export default function App() {
         return () => clearInterval(interval);
     }, [tenzies, hasStarted]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         const allHeld = dice.every((die) => die.isHeld);
         const firstValue = dice[0].value;
         const allSameValue = dice.every((die) => die.value === firstValue);
@@ -64,9 +64,7 @@ export default function App() {
         if (!tenzies) {
             setHasStarted(true);
             setDice((oldDice) =>
-                oldDice.map((die) => {
-                    return die.isHeld ? die : generateNewDie();
-                })
+                oldDice.map((die) => die.isHeld ? die : generateNewDie())
             );
             setRollCount((prevCount) => prevCount + 1);
         } else {
